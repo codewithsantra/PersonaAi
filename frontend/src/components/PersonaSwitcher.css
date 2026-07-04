@@ -1,0 +1,64 @@
+.persona-switcher {
+  display: flex;
+  gap: 12px;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.persona-tab {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  overflow: hidden;
+}
+
+.persona-tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--tab-accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.persona-tab:hover {
+  transform: translateY(-2px);
+  border-color: var(--tab-accent);
+}
+
+.persona-tab.active {
+  border-color: var(--tab-accent);
+  background: var(--bg-elevated);
+}
+
+.persona-tab.active::before {
+  opacity: 0.08;
+}
+
+.persona-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.persona-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.persona-tab.active .persona-name {
+  color: var(--tab-accent);
+}

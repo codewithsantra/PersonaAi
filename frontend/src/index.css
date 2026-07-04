@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-void: #0f0b09;
+  --bg-surface: #1a140f;
+  --bg-elevated: #241b14;
+  --border-subtle: #3a2c20;
+
+  --chai-amber: #d98e4a;
+  --chai-rust: #b8532f;
+  --chai-cream: #f2e8dc;
+  --text-primary: #f2e8dc;
+  --text-muted: #a89a87;
+
+  --hitesh-accent: #d98e4a;
+  --piyush-accent: #4a9d8e;
+
+  --font-display: 'Fraunces', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(217, 142, 74, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(74, 157, 142, 0.06), transparent 40%);
+}
+
+#root {
+  min-height: 100vh;
+}
