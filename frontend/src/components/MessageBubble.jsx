@@ -1,9 +1,7 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { personaMeta } from "../lib/personas";
 import "./MessageBubble.css";
-
-const personaMeta = {
-  hitesh: { name: "Hitesh", initial: "H", accent: "var(--hitesh-accent)" },
-  piyush: { name: "Piyush", initial: "P", accent: "var(--piyush-accent)" },
-};
 
 export default function MessageBubble({ role, content, persona }) {
   const isUser = role === "user";
@@ -20,7 +18,11 @@ export default function MessageBubble({ role, content, persona }) {
         className={`bubble ${isUser ? "user-bubble" : "assistant-bubble"}`}
         style={!isUser ? { "--tab-accent": meta.accent } : undefined}
       >
-        {content}
+        {isUser ? (
+          content
+        ) : (
+          <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
+        )}
       </div>
     </div>
   );

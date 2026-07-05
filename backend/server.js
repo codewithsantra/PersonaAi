@@ -1,14 +1,23 @@
 const express = require("express");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
 const chatRoute = require("./routes/chat");
 
 const app = express();
 app.use(cors());
-app.use(express.json()); //lets server read json req bodies
+app.use(express.json());
 
-app.use("/api/chat", chatRoute); //any res to /api/chat gets handled by this router.
+const chatLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many requests — slow down and try again in a minute." },
+});
+
+app.use("/api/chat", chatLimiter, chatRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
