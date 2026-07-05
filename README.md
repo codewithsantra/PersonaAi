@@ -74,11 +74,11 @@ The app will be available at `http://localhost:5173`.
 
 ### Environment Variables
 
-| Variable | Location | Description |
-|---|---|---|
-| `OPENAI_API_KEY` | `backend/.env` | Your OpenAI API key |
-| `PORT` | `backend/.env` | Backend server port (default: 5000) |
-| `VITE_API_URL` | `frontend/.env` | Backend URL (default: `http://localhost:5000`) |
+| Variable         | Location        | Description                                    |
+| ---------------- | --------------- | ---------------------------------------------- |
+| `OPENAI_API_KEY` | `backend/.env`  | Your OpenAI API key                            |
+| `PORT`           | `backend/.env`  | Backend server port (default: 5000)            |
+| `VITE_API_URL`   | `frontend/.env` | Backend URL (default: `http://localhost:5000`) |
 
 ---
 
@@ -125,6 +125,7 @@ Each persona prompt follows a structured format with five sections:
 5. **Boundaries & Examples**: Hard rules (never break character, don't guess pricing) plus few-shot examples that demonstrate the expected tone and length calibration.
 
 **Key design decisions:**
+
 - The "response calibration" section is placed first because LLMs weight earlier instructions more heavily
 - Signature phrases are rate-limited to prevent repetitive, robotic-sounding responses
 - User override rules (e.g., "reply in English") are given highest priority to prevent frustrating loops
@@ -144,6 +145,7 @@ Context management is handled at three levels:
 4. **Persistence**: Conversations are saved to **localStorage** per browser, so users can refresh or return later without losing history. A clear chat button allows resetting a persona's conversation.
 
 This approach balances three concerns:
+
 - **Coherence**: 20 messages (~10 exchanges) is enough for the model to maintain conversation threads
 - **Cost**: Token cap + context truncation prevents runaway usage
 - **Reliability**: Avoids 4xx errors from exceeding the model's context window
@@ -157,25 +159,25 @@ This approach balances three concerns:
 ```
 User: What is the best way to learn JavaScript?
 
-Hitesh: Dekho, sabse pehle ek cheez clear karo — JavaScript sirf ek 
-scripting language nahi hai, yeh ek full-fledged programming language hai. 
-Best way? **Project banao.** Tutorial dekhna band karo ek point ke baad. 
-Ek todo app banao, phir ek weather app, phir ek full-stack app. Har 
-project mein kuch naya seekhoge — DOM manipulation, async/await, APIs. 
+Hitesh: Dekho, sabse pehle ek cheez clear karo — JavaScript sirf ek
+scripting language nahi hai, yeh ek full-fledged programming language hai.
+Best way? **Project banao.** Tutorial dekhna band karo ek point ke baad.
+Ek todo app banao, phir ek weather app, phir ek full-stack app. Har
+project mein kuch naya seekhoge — DOM manipulation, async/await, APIs.
 Aur haan, **vanilla JS pehle**, framework baad mein.
 
 User: Which framework should I learn first — React or Angular?
 
-Hitesh: React. Industry demand zyada hai, learning curve comparatively 
-easier hai, aur ecosystem bohot rich hai. Angular bhi accha hai — 
-enterprise mein bahut use hota hai — but agar ek choose karna hai toh 
-React se start karo. Lekin pehle make sure your vanilla JS is solid, 
+Hitesh: React. Industry demand zyada hai, learning curve comparatively
+easier hai, aur ecosystem bohot rich hai. Angular bhi accha hai —
+enterprise mein bahut use hota hai — but agar ek choose karna hai toh
+React se start karo. Lekin pehle make sure your vanilla JS is solid,
 warna koi bhi framework struggle dega.
 
 User: Do you have a React course?
 
-Hitesh: Haan, mere YouTube channel "Chai aur Code" pe React ka full 
-series hai — free hai. Aur agar structured learning chahiye toh 
+Hitesh: Haan, mere YouTube channel "Chai aur Code" pe React ka full
+series hai — free hai. Aur agar structured learning chahiye toh
 courses.chaicode.com pe check karo, wahan cohort-based courses milenge.
 ```
 
@@ -184,16 +186,16 @@ courses.chaicode.com pe check karo, wahan cohort-based courses milenge.
 ```
 User: Should I learn Docker?
 
-Piyush: Docker is dead. Just kidding — obviously learn it, it's 
-literally everywhere. Here's the thing though — don't just memorize 
-Dockerfile syntax. Take a Node.js app you've already built, containerize 
-it, push it to a registry, deploy it. You'll learn more in 2 hours of 
+Piyush: Docker is dead. Just kidding — obviously learn it, it's
+literally everywhere. Here's the thing though — don't just memorize
+Dockerfile syntax. Take a Node.js app you've already built, containerize
+it, push it to a registry, deploy it. You'll learn more in 2 hours of
 doing that than a week of reading docs.
 
 User: How does WebSocket work?
 
-Piyush: So basically, a normal HTTP request is like sending a letter — 
-you send one, you get one back, connection closed. WebSocket is like a 
+Piyush: So basically, a normal HTTP request is like sending a letter —
+you send one, you get one back, connection closed. WebSocket is like a
 phone call — once connected, both sides can talk whenever they want.
 
 Technically:
@@ -201,13 +203,13 @@ Technically:
 2. Server agrees → connection "upgrades" to WebSocket
 3. Now both sides can send messages anytime over the same TCP connection
 
-That's it. If you want to see it in action, build a real-time chat — 
+That's it. If you want to see it in action, build a real-time chat —
 `ws` library in Node, you'll have it working in 30 minutes.
 
 User: Do you have a WebSocket course?
 
-Piyush: Yeah, I have a "Realtime Communication Masterclass" on 
-piyushgarg.dev that covers WebRTC, Socket.IO, and WebSockets in depth. 
+Piyush: Yeah, I have a "Realtime Communication Masterclass" on
+piyushgarg.dev that covers WebRTC, Socket.IO, and WebSockets in depth.
 Check it out there for the latest pricing.
 ```
 
@@ -215,12 +217,12 @@ Check it out there for the latest pricing.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
+| Layer    | Technology                                 |
+| -------- | ------------------------------------------ |
 | Frontend | React 19, Vite 8, CSS3 (custom properties) |
-| Backend | Express 5, Node.js |
-| AI Model | OpenAI GPT-4o-mini |
-| Markdown | react-markdown, remark-gfm |
+| Backend  | Express 5, Node.js                         |
+| AI Model | OpenAI GPT-4o-mini                         |
+| Markdown | react-markdown, remark-gfm                 |
 
 ## Project Structure
 
@@ -250,7 +252,3 @@ PersonaAi/
 │   └── package.json
 └── README.md
 ```
-
-## License
-
-ISC
