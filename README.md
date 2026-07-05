@@ -6,7 +6,7 @@ Switch between personas and experience their unique teaching styles, vocabulary,
 
 ## Live Demo
 
-> _[Add deployed URL here]_
+**[persona-ai-chatapp.netlify.app](https://persona-ai-chatapp.netlify.app/)**
 
 ## Features
 

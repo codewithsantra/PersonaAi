@@ -17,6 +17,10 @@ const chatLimiter = rateLimit({
   message: { error: "Too many requests — slow down and try again in a minute." },
 });
 
+app.get("/", (req, res) => {
+  res.json({ status: "PersonaAI API is running" });
+});
+
 app.use("/api/chat", chatLimiter, chatRoute);
 
 const PORT = process.env.PORT || 5000;
